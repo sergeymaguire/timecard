@@ -34,6 +34,6 @@ function addEmployee(){
 //Listing out our on click event
 
 $("#addEmployee").on("click", addEmployee)
-database.ref().on("childe_added", function(snapshot){
+database.ref().on("child_added", function(snapshot){
     //update dom with snapshot.val()
 })
