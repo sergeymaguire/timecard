@@ -21,20 +21,25 @@ function addEmployee(){
     var startDate = $("#start-date").val().trim();
     var monthRate = $("#ee-rate").val().trim();
 
-    //push to firebase
-    database.ref().push({
-        name: name,
-        role: role,
-        startDate: startDate,
-        monthRate: monthRate,
-        dateAdded: firebase.database.ServerValue.TIMESTAMP
-    })
+    if (name && role && startDate && monthRate){
+        //push to firebase
+        database.ref().push({
+            name: name,
+            role: role,
+            startDate: startDate,
+            monthRate: monthRate,
+            dateAdded: firebase.database.ServerValue.TIMESTAMP
+        })
+
+    }
+
+    
 }
 
 //Listing out our on click event
 
 $("#addEmployee").on("click", addEmployee)
-database.ref().on("childe_added", function(snapshot){
+database.ref().on("child_added", function(snapshot){
     //update dom with snapshot.val()
     
     $("#name-display").text(snapshot.val().name);
