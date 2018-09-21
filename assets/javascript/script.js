@@ -41,12 +41,13 @@ function addEmployee(){
 $("#addEmployee").on("click", addEmployee)
 database.ref().on("child_added", function(snapshot){
     //update dom with snapshot.val()
+    var rowDiv = $("<tr>");
     
-    $("#name-display").text(snapshot.val().name);
-$("#email-display").text(snapshot.val().role);
-$("#age-display").text(snapshot.val().startDate);
-$("#comment-display").text(snapshot.val().monthRate);
-$("#comment-display").text(snapshot.val().dateAdded);
+    var rowName = snapshot.val().name;
+    var rowRole = snapshot.val().role;
+    var rowDate = snapshot.val().startDate;
+    var rowRate = snapshot.val().monthRate;
+    // $("#comment-display").text(snapshot.val().dateAdded);
 
 }, function(errorObject) {
     console.log("Errors handled: " + errorObject.code);
