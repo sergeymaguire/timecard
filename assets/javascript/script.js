@@ -40,13 +40,14 @@ function addEmployee() {
         alert("Invalid start date!");
         return;
     }
+    var fixedDate = moment(startDate).format('MM/DD/YYY');
 
     if (name && role && startDate && monthRate) {
         //push to firebase
         database.ref().push({
             name: name,
             role: role,
-            startDate: startDate,
+            startDate: fixedDate,
             monthRate: monthRate,
             dateAdded: firebase.database.ServerValue.TIMESTAMP
         });
@@ -71,7 +72,7 @@ database.ref().orderByChild("dateAdded").on("child_added", function (snapshot) {
 
     var rowName = snapshot.val().name;
     var rowRole = snapshot.val().role;
-    var rowDate = snapshot.val().startDate;
+    var rowDate = moment(snapshot.val().startDate).format("MM/DD/YYYY");
     var rowRate = snapshot.val().monthRate;
     var monthsDif = moment().diff(moment(rowDate), "months");
     // alert (monthsDif);
