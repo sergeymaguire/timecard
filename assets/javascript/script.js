@@ -1,5 +1,10 @@
 
-
+  Date.prototype.isValid = function () {
+    // An invalid date object returns NaN for getTime() and NaN is the only
+    // object not strictly equal to itself.
+    return this.getTime() === this.getTime();
+};  
+ 
 
 // Initialize Firebase
 var config = {
@@ -22,6 +27,14 @@ function addEmployee(){
     var startDate = $("#start-date").val().trim();
     var monthRate = $("#ee-rate").val().trim();
     
+    var d = new Date(startDate);
+    console.log(d.isValid());
+    console.log(d);
+
+    if (!(d.isValid())){
+        alert("Invalid start date!");
+        return;
+    }
 
     if (name && role && startDate && monthRate){
         //push to firebase
@@ -66,6 +79,5 @@ database.ref().orderByChild("dateAdded").on("child_added", function(snapshot){
 }, function(errorObject) {
     console.log("Errors handled: " + errorObject.code);
   });
-
 
 
