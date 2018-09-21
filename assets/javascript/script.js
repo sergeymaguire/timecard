@@ -18,13 +18,15 @@ function addEmployee(){
     //check for validation
     var name = $("#ee-name").val().trim();
     var role = $("#ee-role").val().trim();
+    var startDate = $("#start-date").val().trim();
+    var monthRate = $("#ee-rate").val().trim();
 
     //push to firebase
     database.ref().push({
         name: name,
-        email: email,
-        age: age,
-        comment: commetn,
+        role: role,
+        startDate: startDate,
+        monthRate: monthRate,
         dateAdded: firebse.database.ServerValue.TIMESTAMP
     })
 }
