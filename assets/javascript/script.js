@@ -63,14 +63,16 @@ database.ref().orderByChild("dateAdded").on("child_added", function(snapshot){
     var rowRole = snapshot.val().role;
     var rowDate = snapshot.val().startDate;
     var rowRate = snapshot.val().monthRate;
+    var monthsDif = moment().diff(moment(rowDate), "months");
+    // alert (monthsDif);
     // $("#comment-display").text(snapshot.val().dateAdded);
     //add row data in order: Name, Role, Start Date, Months WOrked, Monthly Rate, Total billed
     rowDiv.append($("<td>").text(rowName));
     rowDiv.append($("<td>").text(rowRole));
     rowDiv.append($("<td>").text(rowDate));
-    rowDiv.append($("<td>").text("Months Worked Here"));
+    rowDiv.append($("<td>").text(monthsDif));
     rowDiv.append($("<td>").text(rowRate));
-    rowDiv.append($("<td>").text("Total Billed here"));
+    rowDiv.append($("<td>").text(monthsDif*parseInt(rowRate)));
 
     //append row to table
     $("#data-table").append(rowDiv);
