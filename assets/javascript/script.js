@@ -26,7 +26,7 @@ function addEmployee() {
     var role = $("#ee-role").val().trim();
     var startDate = $("#start-date").val().trim();
     var monthRate = $("#ee-rate").val().trim();
-
+    var fixedDate = moment(startDate).format('MM/DD/YYY');
     var d = new Date(startDate);
     console.log(d.isValid());
     console.log(d);
@@ -40,7 +40,7 @@ function addEmployee() {
         alert("Invalid start date!");
         return;
     }
-    var fixedDate = moment(startDate).format('MM/DD/YYY');
+
 
     if (name && role && startDate && monthRate) {
         //push to firebase
