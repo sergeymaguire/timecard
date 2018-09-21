@@ -20,9 +20,18 @@ function addEmployee(){
     var role = $("#ee-role").val().trim();
 
     //push to firebase
-    
+    database.ref().push({
+        name: name,
+        email: email,
+        age: age,
+        comment: commetn,
+        dateAdded: firebse.database.ServerValue.TIMESTAMP
+    })
 }
 
 //Listing out our on click event
 
 $("#addEmployee").on("click", addEmployee)
+database.ref().on("childe_added", function(snapshot){
+    //update dom with snapshot.val()
+})
