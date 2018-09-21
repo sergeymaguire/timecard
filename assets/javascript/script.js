@@ -15,11 +15,13 @@ firebase.initializeApp(config);
 var database = firebase.database();
 
 function addEmployee(){
+    event.preventDefault();
     //check for validation
     var name = $("#ee-name").val().trim();
     var role = $("#ee-role").val().trim();
     var startDate = $("#start-date").val().trim();
     var monthRate = $("#ee-rate").val().trim();
+    
 
     if (name && role && startDate && monthRate){
         //push to firebase
@@ -29,7 +31,8 @@ function addEmployee(){
             startDate: startDate,
             monthRate: monthRate,
             dateAdded: firebase.database.ServerValue.TIMESTAMP
-        })
+        });
+        //clear inputs? done by default
 
     }
 
@@ -39,7 +42,7 @@ function addEmployee(){
 //Listing out our on click event
 
 $("#addEmployee").on("click", addEmployee)
-database.ref().on("child_added", function(snapshot){
+database.ref().orderByChild("dateAdded").on("child_added", function(snapshot){
     //update dom with snapshot.val()
     var rowDiv = $("<tr>");
     
