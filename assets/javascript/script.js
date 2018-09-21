@@ -11,6 +11,7 @@
     messagingSenderId: "766938401677"
   };
   firebase.initializeApp(config);
+  
 function addEmployee(){
     //check for validation
 
