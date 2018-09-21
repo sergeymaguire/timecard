@@ -27,7 +27,7 @@ function addEmployee(){
         role: role,
         startDate: startDate,
         monthRate: monthRate,
-        dateAdded: firebse.database.ServerValue.TIMESTAMP
+        dateAdded: firebase.database.ServerValue.TIMESTAMP
     })
 }
 
