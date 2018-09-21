@@ -36,4 +36,17 @@ function addEmployee(){
 $("#addEmployee").on("click", addEmployee)
 database.ref().on("childe_added", function(snapshot){
     //update dom with snapshot.val()
+    
+    $("#name-display").text(snapshot.val().name);
+$("#email-display").text(snapshot.val().role);
+$("#age-display").text(snapshot.val().startDate);
+$("#comment-display").text(snapshot.val().monthRate);
+$("#comment-display").text(snapshot.val().dateAdded);
+
 })
+}, function(errorObject) {
+    console.log("Errors handled: " + errorObject.code);
+  });
+
+
+
